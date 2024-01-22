@@ -1,42 +1,61 @@
 import React, { Component } from "react";
 
-class SimpleCounterComponent extends Component{
-    constructor(){
+class SimpleCounterComponent extends Component {
+    constructor() {
         super();
         this.state = {
-            count : 0,
-            toggle : false
-        }
-
-    }
-    incrementCount =()=>{
-        if(this.state.toggle){
-            this.setState((prev)=>({count : prev.count+1}))
-
+            count: 0,
+            toggle: false,
         }
     }
-    toggling=()=>{
-        // console.log(this.state.toggle)
-        this.setState((bool)=>({toggle:!bool.toggle}))
+
+    toggling = () => {
+        this.setState((bool) => ({ toggle: !bool.toggle }))
     }
-    render(){
-        let {count, toggle} = this.state;
+
+    incrementCount = () => {
+        if (this.state.toggle) {
+
+            this.setState((prev) => ({ count: prev.count + 1 }))
+        }
+    }
+
+    render() {
+
+        let { count, toggle } = this.state
         console.log(toggle)
 
-        const changeStyle = {
-            border : "2px solid green"
+        var changeStyle = null;
+        if(toggle){
+            changeStyle ={
+                backgroundColor : "green"
+            }
+        }else{
+            changeStyle ={
+                backgroundColor : "red"
+            }
         }
 
+        var changeButtonStyle = null;
+
+        if(toggle){
+            changeButtonStyle ={
+                cursor : "pointer"
+            }
+        }else{
+            changeButtonStyle ={
+                cursor : "not-allowed"
+            }
+        }
+
+
         return (
-        <>
-        <div>
-            count : {count}
-            <button onClick={this.toggling} style={changeStyle}>set toggle : {toggle} </button>
-
-            <button onClick={this.incrementCount}>add</button>
-        </div>
-        </>
-
+            <>
+                <h1>simple counter</h1>
+                <h3>count : {count}</h3>
+                <button style={changeStyle} onClick={this.toggling}>Set toggle</button>
+                <button style={changeButtonStyle} onClick={this.incrementCount} disabled={!toggle}>counter</button>
+            </>
         )
     }
 }
