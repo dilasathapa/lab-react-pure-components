@@ -6,17 +6,19 @@ class SimpleCounterComponent extends Component {
         this.state = {
             count: 0,
             toggle: false,
+        
         }
     }
 
     toggling = () => {
-        this.setState((bool) => ({ toggle: !bool.toggle }))
+        this.setState({toggle : !this.state.toggle})
     }
 
     incrementCount = () => {
         if (this.state.toggle) {
-
             this.setState((prev) => ({ count: prev.count + 1 }))
+        }else{
+            this.setState((prev)=>({count : prev.count}))
         }
     }
 
@@ -47,14 +49,13 @@ class SimpleCounterComponent extends Component {
                 cursor : "not-allowed"
             }
         }
-
-
+        console.log("simple")
         return (
             <>
                 <h1>simple counter</h1>
                 <h3>count : {count}</h3>
                 <button style={changeStyle} onClick={this.toggling}>Set toggle</button>
-                <button style={changeButtonStyle} onClick={this.incrementCount} disabled={!toggle}>counter</button>
+                <button  onClick={this.incrementCount} >counter</button>
             </>
         )
     }

@@ -15,7 +15,6 @@ class PureCounterComponent extends PureComponent {
 
     incrementCount = () => {
         if (this.state.toggle) {
-
             this.setState((prev) => ({ count: prev.count + 1 }))
         }
     }
@@ -23,7 +22,7 @@ class PureCounterComponent extends PureComponent {
     render() {
 
         let { count, toggle } = this.state
-        console.log(toggle)
+        console.log("pure", count)
         return (
             <>
             <h1>pure component</h1>

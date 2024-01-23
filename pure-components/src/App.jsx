@@ -8,7 +8,6 @@ function App() {
     <>
       <SimpleCounterComponent />
       <PureCounterComponent />
-
     </>
   )
 }
